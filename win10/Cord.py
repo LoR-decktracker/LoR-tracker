@@ -39,7 +39,7 @@ class Cord(QObject):
 
     def setup_timer(self):
         global timer
-        timer = QTimer(interval=5000)
+        timer = QTimer(interval=10)
         timer.timeout.connect(lambda: self.hooking())
         timer.start()
 
