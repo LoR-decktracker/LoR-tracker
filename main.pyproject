@@ -1,3 +1,4 @@
 {
-    "files": ["main.py","view.qml","Bar.qml"]
+    "files": ["main.py","qml/main.qml","qml/Bar.qml", "win10/Cord.py"],
+    "importPaths":["Coordinates"]
 }
