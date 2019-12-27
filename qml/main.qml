@@ -13,33 +13,25 @@ ApplicationWindow {
     y: Coordinates.Cord.y_t
 
 
-    Window {
-        id: windowOne
+    Sidebar {
+        id: leftWindow
         color: "green"
-        visible: true
-        flags: Qt.FramelessWindowHint
-        width: 200
-        height: 200
         x: Coordinates.Cord.x_l
         y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
-           + Coordinates.Cord.y_t - windowTwo.height / 2
-        CheckBox {}
+           + Coordinates.Cord.y_t - height / 2
     }
 
-    Window {
-        id: windowTwo
-        visible: true
-        flags: Qt.FramelessWindowHint
+    Sidebar {
+        id: rightWindow
         color: "red"
-        width: 200
-        height: 200
-        x: Coordinates.Cord.x_r - windowTwo.width
+        x: Coordinates.Cord.x_r - width
         y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
-           + Coordinates.Cord.y_t - windowTwo.height / 2
-        CheckBox {}
+           + Coordinates.Cord.y_t - height / 2
     }
+
 
     // hooking timer
+    // Updates the cordinates for
     Timer {
         interval: 10
         running: true
