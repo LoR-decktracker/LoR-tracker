@@ -1,6 +1,8 @@
-from PySide2.QtGui import QGuiApplication
-from PySide2.QtQml import QQmlApplicationEngine
-from PySide2.QtCore import QUrl
+import sys
+
+from qtpy.QtCore import QUrl
+from qtpy.QtGui import QGuiApplication
+from qtpy.QtQml import QQmlApplicationEngine, qmlRegisterType, qmlRegisterSingletonType
 
 import platform
 
@@ -10,23 +12,17 @@ if platform.system() == "Windows":
 else:
     exit()
 
-
-def setup_hook(engine):
-    # set coordinate hooking
-    cord = Cord()
-    engine.rootContext().setContextProperty("cord", cord)
-
-
 if __name__ == '__main__':
     app = QGuiApplication([])
     engine = QQmlApplicationEngine()
 
-    # make it so that the overlay stays attached to the window
-    setup_hook(engine)
+
+
+    # Add coordinates for target window
+    qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", Cord.getInstance)
 
     # Load QML
     url = QUrl("qml/main.qml")
     engine.load(url)
 
-    app.exec_()
-    del engine
+    sys.exit(app.exec_())
