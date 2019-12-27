@@ -6,6 +6,7 @@ from qtpy.QtQml import QQmlApplicationEngine, qmlRegisterType, qmlRegisterSingle
 
 import platform
 
+# import system specific files
 if platform.system() == "Windows":
     print("Windows Detected")
     from win10.Cord import Cord
@@ -16,10 +17,8 @@ if __name__ == '__main__':
     app = QGuiApplication([])
     engine = QQmlApplicationEngine()
 
-
-
-    # Add coordinates for target window
-    qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", Cord.getInstance)
+    # Send Singleton with coordinates of target window to QML
+    qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", Cord.get_instance)
 
     # Load QML
     url = QUrl("qml/main.qml")

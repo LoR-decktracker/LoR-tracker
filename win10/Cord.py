@@ -8,7 +8,7 @@ class Cord(QObject):
 
     #
     @staticmethod
-    def getInstance(*args):
+    def get_instance(*args):
         if Cord.__instance is None:
             Cord.__instance = Cord()
             print("new")
