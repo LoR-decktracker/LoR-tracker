@@ -1,4 +1,4 @@
-from qtpy.QtCore import QObject, Signal, Property
+from PySide2.QtCore import QObject, Signal, Property
 from enum import Enum
 
 
@@ -20,7 +20,7 @@ class Bar(QObject):
         :param count:
         :param region: should be an enum of Region
         """
-        QObject.__init__(self)
+        super().__init__()
 
         self.__name = name
         self.__cost = cost

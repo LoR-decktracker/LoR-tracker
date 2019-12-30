@@ -1,4 +1,4 @@
-from qtpy.QtCore import QObject, Property, QMetaMethod, Signal, Slot
+from PySide2.QtCore import QObject, Property, QMetaMethod, Signal, Slot
 from win32gui import FindWindow, GetWindowRect
 
 

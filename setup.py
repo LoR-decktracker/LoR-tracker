@@ -8,5 +8,5 @@ setup(
     license='',
     author='shubh',
     author_email='',
-    description='', install_requires=['PySide2', 'pywin32', "qtpy", "PyQt5"]
+    description='', install_requires=['PySide2', 'pywin32']
 )
