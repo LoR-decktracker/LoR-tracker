@@ -11,6 +11,7 @@ ApplicationWindow {
     color: "transparent"
     x: Coordinates.Cord.x_l
     y: Coordinates.Cord.y_t
+    width: Coordinates.Cord.x_r - Coordinates.Cord.x_l
 
 
     Sidebar {
@@ -31,7 +32,7 @@ ApplicationWindow {
 
 
     // hooking timer
-    // Updates the cordinates for
+    // Updates the coordinates for
     Timer {
         interval: 10
         running: true

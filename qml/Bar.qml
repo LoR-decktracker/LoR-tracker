@@ -17,15 +17,15 @@ Rectangle {
 
 
 
-//         Text {
-//              id: manaCost
-//              color: "white"
-//              text: "3"
-//              font.pointSize: 25
-//              verticalAlignment: Text.AlignVCenter
-//              horizontalAlignment: Text.AlignHCenter
-//              anchors.fill: parent
-//         }
+         Text {
+              id: manaCost
+              color: "white"
+              text: "3"
+              font.pointSize: 25
+              verticalAlignment: Text.AlignVCenter
+              horizontalAlignment: Text.AlignHCenter
+              anchors.fill: parent
+         }
     }
 
     Text {
