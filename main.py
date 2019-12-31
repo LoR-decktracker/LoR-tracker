@@ -1,7 +1,7 @@
 import sys
 from functools import partial
 
-import pywintypes
+from pywintypes import error
 from qtpy.QtCore import QUrl, QTimer
 from qtpy.QtGui import QGuiApplication
 from qtpy.QtQml import QQmlApplicationEngine, qmlRegisterType
@@ -22,7 +22,7 @@ else:
 def hooking_fun(cord: Cord):
     try:
         cord.hooking()
-    except pywintypes.error:
+    except error:
         # Handel exit
         app.exit()
 
