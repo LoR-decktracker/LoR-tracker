@@ -20,15 +20,13 @@ if __name__ == '__main__':
     app = QGuiApplication([])
     engine = QQmlApplicationEngine()
 
-    # engine.setR
-
     # Send Singleton with coordinates of target window to QML
     # qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", Cord.get_instance)
     c = Cord()
     engine.rootContext().setContextProperty("Cord", c)
 
     #FIXME attach to real views
-    lst = [Bar("user1", 1, 3, Region.DEMACIA), Bar("User2", 2,4, Region.DEMACIA)]
+    lst = [Bar("user1", 1, 3, Region.DEMACIA), Bar("User2", 2, 4, Region.DEMACIA)]
     barList = BarList(lst)
 
     engine.rootContext().setContextProperty("lst", barList)
