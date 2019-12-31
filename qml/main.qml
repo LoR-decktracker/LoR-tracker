@@ -28,6 +28,7 @@ ApplicationWindow {
         x: Cord.x_r - width
         y: (Cord.y_b - Cord.y_t) / 2
            + Cord.y_t - height / 2
+        barModel: lst
     }
 
 

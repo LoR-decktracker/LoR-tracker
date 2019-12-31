@@ -1,8 +1,8 @@
 import sys
 
-from PySide2.QtCore import QUrl
-from PySide2.QtGui import QGuiApplication
-from PySide2.QtQml import QQmlApplicationEngine, qmlRegisterType
+from qtpy.QtCore import QUrl
+from qtpy.QtGui import QGuiApplication
+from qtpy.QtQml import QQmlApplicationEngine, qmlRegisterType
 
 from dataObjects.Bar import Bar, Region
 from dataObjects.BarList import BarList
@@ -24,9 +24,11 @@ if __name__ == '__main__':
 
     # Send Singleton with coordinates of target window to QML
     # qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", Cord.get_instance)
-    engine.rootContext().setContextProperty("Cord", Cord.get_instance())
+    c = Cord()
+    engine.rootContext().setContextProperty("Cord", c)
 
-    lst = [Bar("user1", 1, 1, Region.DEMACIA), Bar("User2", 1, 1, Region.DEMACIA)]
+    #FIXME attach to real views
+    lst = [Bar("user1", 1, 3, Region.DEMACIA), Bar("User2", 2,4, Region.DEMACIA)]
     barList = BarList(lst)
 
     engine.rootContext().setContextProperty("lst", barList)

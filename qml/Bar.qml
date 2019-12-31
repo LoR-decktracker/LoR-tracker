@@ -3,9 +3,12 @@ import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
 
 Rectangle {
+    property int cost
+    property string name
+    property int count
+    property int region
+
     id: bar
-    width: 200
-    height: 40
     color: "#ffffff"
 
     Rectangle {
@@ -15,12 +18,10 @@ Rectangle {
          color: "blue"
          radius: width*0.5
 
-
-
          Text {
-              id: manaCost
+              id: manaCostText
               color: "white"
-              text: "3"
+              text: cost
               font.pointSize: 25
               verticalAlignment: Text.AlignVCenter
               horizontalAlignment: Text.AlignHCenter
@@ -29,8 +30,8 @@ Rectangle {
     }
 
     Text {
-        id:cardName
-        text: "Name"
+        id: cardNameText
+        text: name
         anchors.left: manaCostBox.right
         color: "black"
         font.pointSize: 25
@@ -47,18 +48,13 @@ Rectangle {
         anchors.rightMargin: 0
 
         Text {
-            id: countBox
-            text: "2"
+            id: countText
+            text: count
             color: "white"
             font.pointSize: 25
             anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
         }
-    }
-
-    CheckBox {
-        id: checkBox
-        text: qsTr("Check Box")
     }
 }

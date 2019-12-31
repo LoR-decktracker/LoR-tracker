@@ -1,9 +1,13 @@
-from PySide2.QtCore import QAbstractListModel, QModelIndex, Qt
+'''
+for qml usage reference look at Sidebar.qml
+'''
+
+from qtpy.QtCore import QAbstractListModel, QModelIndex, Qt
+
+from dataObjects.Bar import Bar
 
 
 class BarList(QAbstractListModel):
-    NameRole = Qt.UserRole
-    AgeRole = Qt.UserRole + 1
 
     def __init__(self, lst: list):
         super().__init__()
@@ -14,14 +18,7 @@ class BarList(QAbstractListModel):
 
     def data(self, index, role):
         row = index.row()
-        lst = [
-            {'name': 'jon', 'age': 20},
-            {'name': 'jane', 'age': 25}
-        ]
-        return lst[row]['name']
+        return self._lst[row]
 
     def roleNames(self):
-        return {
-            BarList.NameRole: b'name',
-            BarList.AgeRole: b'count'
-        }
+        return Bar.roles

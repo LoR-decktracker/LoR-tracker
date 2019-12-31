@@ -1,21 +1,11 @@
-from PySide2.QtCore import QObject, Property, QMetaMethod, Signal, Slot
+from qtpy.QtCore import QObject, Property, QMetaMethod, Signal, Slot
 from win32gui import FindWindow, GetWindowRect
 
 
 class Cord(QObject):
-    _main_instance = None
     changed = Signal()
 
-    #
-    @staticmethod
-    def get_instance(*args):
-        if Cord._main_instance is None:
-            Cord._main_instance = Cord()
-            print("new")
-
-        return Cord._main_instance
-
-    # TODO: find the right window
+    # FIXME: find the right window
     def __init__(self, parent=None, window=FindWindow(None, "File Explorer")):
         super().__init__()
         self._window = window
