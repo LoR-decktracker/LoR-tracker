@@ -1,4 +1,8 @@
-from qtpy.QtCore import QObject, Signal, Property
+'''
+meant to be used with BarList.py
+'''
+
+from qtpy.QtCore import QObject, Signal, Property, Qt
 from enum import Enum
 
 
@@ -12,6 +16,9 @@ class Region(Enum):
 
 
 class Bar(QObject):
+    roles = {
+        Qt.UserRole + 1: b'bar'
+    }
 
     def __init__(self, name: str, cost: int, count: int, region: Region):
         """
@@ -20,12 +27,12 @@ class Bar(QObject):
         :param count:
         :param region: should be an enum of Region
         """
-        QObject.__init__(self)
+        super().__init__()
 
-        self.__name = name
-        self.__cost = cost
-        self.__count = count
-        self.__region = region
+        self._name = name
+        self._cost = cost
+        self._count = count
+        self._region = region
 
     # ----------------------------------------------------------------------------------------------------------------------
 
@@ -33,11 +40,11 @@ class Bar(QObject):
 
     @Property(str, notify=nameChanged)
     def name(self) -> str:
-        return self.__name
+        return self._name
 
     @name.setter
     def name(self, name: str):
-        self.__name = name
+        self._name = name
         self.nameChanged.emit()
 
     # cost
@@ -45,11 +52,11 @@ class Bar(QObject):
 
     @Property(int, notify=costChanged)
     def cost(self):
-        return self.__cost
+        return self._cost
 
     @cost.setter
     def cost(self, cost: int):
-        self.__cost = cost
+        self._cost = cost
         self.costChanged.emit()
 
     # count
@@ -57,11 +64,11 @@ class Bar(QObject):
 
     @Property(int, notify=countChanged)
     def count(self):
-        return self.__count
+        return self._count
 
     @count.setter
     def count(self, count: int):
-        self.__count = count
+        self._count = count
         self.countChanged.emit()
 
     # region
@@ -69,9 +76,9 @@ class Bar(QObject):
 
     @Property(int, notify=regionChanged)
     def region(self) -> Region:
-        return self.__region
+        return self._region
 
     @region.setter
     def region(self, region: Region):
-        self.__region = region
+        self._region = region
         self.regionChanged.emit()

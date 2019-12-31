@@ -3,22 +3,12 @@ from win32gui import FindWindow, GetWindowRect
 
 
 class Cord(QObject):
-    __main_instance = None
     changed = Signal()
 
-    #
-    @staticmethod
-    def get_instance(*args):
-        if Cord.__main_instance is None:
-            Cord.__main_instance = Cord()
-            print("new")
-
-        return Cord.__main_instance
-
-    # TODO: find the right window
+    # FIXME: find the right window
     def __init__(self, parent=None, window=FindWindow(None, "File Explorer")):
-        QObject.__init__(self)
-        self.__window = window
+        super().__init__()
+        self._window = window
         self._x_l = self._y_t = self._x_r = self._y_b = 0
 
     @Property(int, notify=changed)
@@ -45,9 +35,10 @@ class Cord(QObject):
 
     @Slot()
     def hooking(self):
-        x_l, y_t, x_r, y_b = GetWindowRect(self.__window)
+        x_l, y_t, x_r, y_b = GetWindowRect(self._window)
 
         if not self.equals(x_l, y_t, x_r, y_b):
+            # DEBUG
             print(x_l, y_t, x_r, y_b)
             self._x_l, self._y_t, self._x_r, self._y_b = x_l, y_t, x_r, y_b
             self.changed.emit()
