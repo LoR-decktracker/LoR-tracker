@@ -30,14 +30,4 @@ ApplicationWindow {
            + Cord.y_t - height / 2
         barModel: lst
     }
-
-
-    // hooking timer
-    // Updates the coordinates for
-//    Timer {
-//        interval: 10
-//        running: true
-//        repeat: true
-//        onTriggered: Cord.hooking()
-//    }
 }
