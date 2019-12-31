@@ -34,10 +34,10 @@ ApplicationWindow {
 
     // hooking timer
     // Updates the coordinates for
-    Timer {
-        interval: 10
-        running: true
-        repeat: true
-        onTriggered: Cord.hooking()
-    }
+//    Timer {
+//        interval: 10
+//        running: true
+//        repeat: true
+//        onTriggered: Cord.hooking()
+//    }
 }

@@ -1,6 +1,7 @@
 import sys
+from functools import partial
 
-from qtpy.QtCore import QUrl
+from qtpy.QtCore import QUrl, QTimer
 from qtpy.QtGui import QGuiApplication
 from qtpy.QtQml import QQmlApplicationEngine, qmlRegisterType
 
@@ -16,6 +17,15 @@ if platform.system() == "Windows":
 else:
     exit()
 
+
+def hooking_fun(cord: Cord):
+    try:
+        cord.hooking()
+    except:
+        #Handel exit
+        app.exit()
+
+
 if __name__ == '__main__':
     app = QGuiApplication([])
     engine = QQmlApplicationEngine()
@@ -25,7 +35,11 @@ if __name__ == '__main__':
     c = Cord()
     engine.rootContext().setContextProperty("Cord", c)
 
-    #FIXME attach to real views
+    timer = QTimer()
+    timer.timeout.connect(partial(hooking_fun, c))
+    timer.start()
+
+    # FIXME attach to real views
     lst = [Bar("user1", 1, 3, Region.DEMACIA), Bar("User2", 2, 4, Region.DEMACIA)]
     barList = BarList(lst)
 
