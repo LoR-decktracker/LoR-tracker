@@ -44,6 +44,7 @@ Window {
 		anchors.left: parent.left
 		anchors.leftMargin: squareRect.radius
 
+		interactive: false
 		model: barModel
 		delegate: Bar {
 			width: 200
