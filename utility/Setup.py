@@ -31,12 +31,12 @@ class Setup:
         qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", lambda *args: self.c)
         # engine.rootContext().setContextProperty("Cord", c)
 
-        self.timer.timeout.connect(partial(self._hooking_fun, self.c))
+        self.timer.timeout.connect(self._hooking_fun)
         self.timer.start()
 
-    def _hooking_fun(self, cord: Cord):
+    def _hooking_fun(self):
         try:
-            cord.hooking()
+            self.c.hooking()
         except error:
             # Handel exit
             self.app.exit()
