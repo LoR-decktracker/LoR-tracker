@@ -21,9 +21,6 @@ def main():
 	setup.setup_hooking()
 	setup.setup_bars()
 
-	# FIXME attach to real views
-
-
 	# Load QML
 	url = QUrl("qml/main.qml")
 	engine.load(url)
