@@ -3,44 +3,44 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 
 Window {
-    id: sidebar
-    visible: true
-    flags: Qt.FramelessWindowHint
-    width: 200 + squareRect.radius
-    height: 400
-    color: "transparent"
-    LayoutMirroring.childrenInherit: true
+	id: sidebar
+	visible: true
+	flags: Qt.FramelessWindowHint
+	width: 200 + squareRect.radius
+	height: 400
+	color: "transparent"
+	LayoutMirroring.childrenInherit: true
 
-    Rectangle {
-        id: squareRect
-        color: "#333333"
-        opacity: 0.80
-        height: parent.height
+	Rectangle {
+		id: squareRect
+		color: "#333333"
+		opacity: 0.80
+		height: parent.height
 
-        radius: 20
-        anchors.right: parent.right
-        anchors.rightMargin: -radius
-        anchors.left: parent.left
-    }
+		radius: 20
+		anchors.right: parent.right
+		anchors.rightMargin: -radius
+		anchors.left: parent.left
+	}
 
-    property var barModel
+	property var barModel
 
-    ListView {
-        id: listview
-        height: childrenRect.height
+	ListView {
+		id: listview
+		height: childrenRect.height
 
-        anchors.right: parent.right
-        anchors.left: parent.left
-        anchors.leftMargin: squareRect.radius
+		anchors.right: parent.right
+		anchors.left: parent.left
+		anchors.leftMargin: squareRect.radius
 
-        model: barModel
-        delegate: Bar {
-            width: 200
-            height: 40
-            cost: bar.cost
-            name: bar.name
-            count: bar.count
-        }
+		model: barModel
+		delegate: Bar {
+			width: 200
+			height: 40
+			cost: bar.cost
+			name: bar.name
+			count: bar.count
+		}
 
-    }
+	}
 }
