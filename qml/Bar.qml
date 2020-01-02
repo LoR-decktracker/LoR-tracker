@@ -15,22 +15,22 @@ Rectangle {
 
 	Rectangle {
 		id: manaCostBox
-		 width: parent.height
-		 height: width
-		 color: "blue"
-		 radius: width*0.5
-		 anchors.left: parent.left
-		 anchors.leftMargin: 0
+		width: parent.height
+		height: width
+		color: "blue"
+		radius: width*0.5
+		anchors.left: parent.left
+		anchors.leftMargin: 0
 
-		 Text {
-			  id: manaCostText
-			  color: "white"
-			  text: cost
-			  font.pointSize: 25
-			  verticalAlignment: Text.AlignVCenter
-			  horizontalAlignment: Text.AlignHCenter
-			  anchors.fill: parent
-		 }
+		Text {
+			id: manaCostText
+			color: "white"
+			text: cost
+			font.pointSize: 25
+			verticalAlignment: Text.AlignVCenter
+			horizontalAlignment: Text.AlignHCenter
+			anchors.fill: parent
+		}
 	}
 
 	Text {
