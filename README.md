@@ -4,7 +4,7 @@ LoR-tracker is a decktracker ovelay for LoR
 
 ## Installation
 
-[python](https://www.python.org/downloads/windows/)  and [pip](https://pip.pypa.io/en/stable/) are required to install LoR-tracker.
+[python](https://www.python.org/downloads/windows/)  and [pip](https://pip.pypa.io/en/stable/) are required to run LoR-tracker.
 
 Then install the required libraries
 ```bash
