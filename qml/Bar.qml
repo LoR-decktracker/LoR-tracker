@@ -10,13 +10,17 @@ Rectangle {
 
     id: bar
     color: "#ffffff"
+    width: 200
+    height: 40
 
     Rectangle {
         id: manaCostBox
-         width: parent.width<parent.height?parent.width:parent.height
+         width: parent.height
          height: width
          color: "blue"
          radius: width*0.5
+         anchors.left: parent.left
+         anchors.leftMargin: 0
 
          Text {
               id: manaCostText
@@ -32,7 +36,10 @@ Rectangle {
     Text {
         id: cardNameText
         text: name
+        anchors.right: coutBox.left
+        anchors.rightMargin: 0
         anchors.left: manaCostBox.right
+        anchors.leftMargin: 0
         color: "black"
         font.pointSize: 25
         verticalAlignment: Text.AlignVCenter
@@ -41,7 +48,7 @@ Rectangle {
 
     Rectangle {
         id: coutBox
-        width: parent.width<parent.height?parent.width:parent.height
+        width: parent.height
         height: width
         color: "black"
         anchors.right: parent.right

@@ -12,20 +12,22 @@ ApplicationWindow {
     x: Coordinates.Cord.x_l
     y: Coordinates.Cord.y_t
     width: Coordinates.Cord.x_r - Coordinates.Cord.x_l
-//    height: Coordinates.Cord.y_b - Coordinates.Cord.y_t
+    height: Coordinates.Cord.y_b - Coordinates.Cord.y_t
 
 
     Sidebar {
         id: leftWindow
-        color: "green"
+//        color: "green"
         x: Coordinates.Cord.x_l
         y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
            + Coordinates.Cord.y_t - height / 2
+        barModel: lst
+        LayoutMirroring.enabled: true
     }
 
     Sidebar {
         id: rightWindow
-        color: "red"
+//        color: "red"
         x: Coordinates.Cord.x_r - width
         y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
            + Coordinates.Cord.y_t - height / 2
