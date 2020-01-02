@@ -22,7 +22,7 @@ ApplicationWindow {
 		y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
 		   + Coordinates.Cord.y_t - height / 2
 		barModel: lst
-		LayoutMirroring.enabled: true
+		isEnemy: true
 	}
 
 	Sidebar {

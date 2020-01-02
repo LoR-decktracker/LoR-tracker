@@ -3,12 +3,14 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 
 Window {
+	property bool isEnemy: false
 	id: sidebar
 	visible: true
 	flags: Qt.FramelessWindowHint
 	width: 200 + squareRect.radius
 	height: 400
 	color: "transparent"
+	LayoutMirroring.enabled: isEnemy
 	LayoutMirroring.childrenInherit: true
 
 	Rectangle {
@@ -25,9 +27,18 @@ Window {
 
 	property var barModel
 
+	Row {
+		id: optionBar
+		anchors.top: parent.top
+		height: 30
+
+	}
+
 	ListView {
 		id: listview
 		height: childrenRect.height
+		anchors.top: optionBar.bottom
+		anchors.topMargin: 0
 
 		anchors.right: parent.right
 		anchors.left: parent.left

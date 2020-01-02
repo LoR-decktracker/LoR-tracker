@@ -20,7 +20,6 @@ Rectangle {
 		color: "blue"
 		radius: width*0.5
 		anchors.left: parent.left
-		anchors.leftMargin: 0
 
 		Text {
 			id: manaCostText
@@ -37,9 +36,7 @@ Rectangle {
 		id: cardNameText
 		text: name
 		anchors.right: coutBox.left
-		anchors.rightMargin: 0
 		anchors.left: manaCostBox.right
-		anchors.leftMargin: 0
 		color: "black"
 		font.pointSize: 25
 		verticalAlignment: Text.AlignVCenter
@@ -52,7 +49,6 @@ Rectangle {
 		height: width
 		color: "black"
 		anchors.right: parent.right
-		anchors.rightMargin: 0
 
 		Text {
 			id: countText
