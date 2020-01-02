@@ -4,20 +4,25 @@ import QtQuick.Controls 2.14
 
 Window {
 	property bool isEnemy: false
+
+	property int barMargin: sidebar.width * 0.10
+	width: 220
+
 	id: sidebar
 	visible: true
 	flags: Qt.FramelessWindowHint
-	width: 200 + squareRect.radius
-	height: 400
 	color: "transparent"
 	LayoutMirroring.enabled: isEnemy
 	LayoutMirroring.childrenInherit: true
+
+
 
 	Rectangle {
 		id: squareRect
 		color: "#333333"
 		opacity: 0.80
 		height: parent.height
+		width: parent.width
 
 		radius: 20
 		anchors.right: parent.right
@@ -29,9 +34,15 @@ Window {
 
 	Row {
 		id: optionBar
+		visible: !isEnemy
 		anchors.top: parent.top
+		anchors.left: parent.left
+		anchors.leftMargin: barMargin
 		height: 30
-
+		Text{
+			color: "#f2f2f2"
+			text: "Etiam eget"
+		}
 	}
 
 	ListView {
@@ -42,17 +53,29 @@ Window {
 
 		anchors.right: parent.right
 		anchors.left: parent.left
-		anchors.leftMargin: squareRect.radius
-
 		interactive: false
 		model: barModel
 		delegate: Bar {
-			width: 200
-			height: 40
+			width: sidebar.width - barMargin
+			// FIXME set height scaling factor
+			height: 40 *  (sidebar.width / (sidebar.width + barMargin))
+
+			anchors.right: parent.right
+
 			cost: bar.cost
 			name: bar.name
 			count: bar.count
 		}
-
 	}
+
+//	Window {
+//		x: sidebar.x - width
+//		y: 0
+//		visible: true
+//		flags: Qt.FramelessWindowHint | Qt.WindowTransparentForInput | Qt.WindowStaysOnTopHint
+//		color: "red"
+//		width: 40
+//		height: 40
+//	}
+
 }

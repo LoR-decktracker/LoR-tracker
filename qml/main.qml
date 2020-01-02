@@ -15,14 +15,18 @@ ApplicationWindow {
 	height: Coordinates.Cord.y_b - Coordinates.Cord.y_t
 
 
+
 	Sidebar {
 		id: leftWindow
 //        color: "green"
 		x: Coordinates.Cord.x_l
 		y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
 		   + Coordinates.Cord.y_t - height / 2
+
+		height: 700
 		barModel: lst
 		isEnemy: true
+
 	}
 
 	Sidebar {
@@ -31,6 +35,7 @@ ApplicationWindow {
 		x: Coordinates.Cord.x_r - width
 		y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
 		   + Coordinates.Cord.y_t - height / 2
+		height: 700
 		barModel: lst
 	}
 }

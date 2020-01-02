@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
-
 Rectangle {
 	property int cost
 	property string name
@@ -60,4 +59,5 @@ Rectangle {
 			horizontalAlignment: Text.AlignHCenter
 		}
 	}
+
 }
