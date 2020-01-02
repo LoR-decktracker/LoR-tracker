@@ -13,23 +13,23 @@ from utility.Setup import Setup
 
 
 def main():
-    app = QGuiApplication([])
-    engine = QQmlApplicationEngine()
+	app = QGuiApplication([])
+	engine = QQmlApplicationEngine()
 
-    setup = Setup(app, engine)
+	setup = Setup(app, engine)
 
-    setup.setup_hooking()
-    setup.setup_bars()
+	setup.setup_hooking()
+	setup.setup_bars()
 
-    # FIXME attach to real views
+	# FIXME attach to real views
 
 
-    # Load QML
-    url = QUrl("qml/main.qml")
-    engine.load(url)
+	# Load QML
+	url = QUrl("qml/main.qml")
+	engine.load(url)
 
-    sys.exit(app.exec_())
+	sys.exit(app.exec_())
 
 
 if __name__ == '__main__':
-    main()
+	main()

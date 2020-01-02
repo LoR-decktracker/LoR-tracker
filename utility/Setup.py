@@ -12,36 +12,37 @@ from dataObjects.Bar import Bar, Region
 from dataObjects.BarList import BarList
 
 if platform.system() == "Windows":
-    print("Windows Detected")
-    from win10.Cord import Cord
+	print("Windows Detected")
+	from win10.Cord import Cord
 else:
-    exit()
+	exit()
 
 
 class Setup:
-    def __init__(self, app: QGuiApplication, engine: QQmlApplicationEngine):
-        self.app = app
-        self.engine = engine
 
-        self.timer = QTimer()
-        self.c = Cord()
+	def __init__(self, app: QGuiApplication, engine: QQmlApplicationEngine):
+		self.app = app
+		self.engine = engine
 
-    def setup_hooking(self):
-        # Send Singleton with coordinates of target window to QML
-        qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", lambda *args: self.c)
-        # engine.rootContext().setContextProperty("Cord", c)
+		self.timer = QTimer()
+		self.c = Cord()
 
-        self.timer.timeout.connect(self._hooking_fun)
-        self.timer.start()
+	def setup_hooking(self):
+		# Send Singleton with coordinates of target window to QML
+		qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", lambda *args: self.c)
+		# engine.rootContext().setContextProperty("Cord", c)
 
-    def _hooking_fun(self):
-        try:
-            self.c.hooking()
-        except error:
-            # Handel exit
-            self.app.exit()
+		self.timer.timeout.connect(self._hooking_fun)
+		self.timer.start()
 
-    def setup_bars(self):
-        lst = [Bar("user1", 1, 3, Region.DEMACIA), Bar("User2", 2, 4, Region.DEMACIA)]
-        self.barList = BarList(lst)
-        self.engine.rootContext().setContextProperty("lst", self.barList)
+	def _hooking_fun(self):
+		try:
+			self.c.hooking()
+		except error:
+			# Handel exit
+			self.app.exit()
+
+	def setup_bars(self):
+		lst = [Bar("user1", 1, 3, Region.DEMACIA), Bar("User2", 2, 4, Region.DEMACIA)]
+		self.barList = BarList(lst)
+		self.engine.rootContext().setContextProperty("lst", self.barList)
