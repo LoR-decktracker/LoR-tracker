@@ -42,6 +42,7 @@ class Setup:
 			# Handel exit
 			self.app.exit()
 
+	# FIXME attach to real views
 	def setup_bars(self):
 		lst = [Bar("user1", 1, 3, Region.DEMACIA), Bar("User2", 2, 4, Region.DEMACIA)]
 		self.barList = BarList(lst)
