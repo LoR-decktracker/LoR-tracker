@@ -1,11 +1,8 @@
 import platform
-from functools import partial
 
 from qtpy.QtCore import QTimer
 from qtpy.QtGui import QGuiApplication
 from qtpy.QtQml import qmlRegisterSingletonType, QQmlApplicationEngine
-
-from pywintypes import error
 
 # import system specific files
 from dataObjects.Bar import Bar, Region
@@ -25,22 +22,16 @@ class Setup:
 		self.engine = engine
 
 		self.timer = QTimer()
-		self.c = Cord()
+		self.c = Cord(engine=engine)
 
 	def setup_hooking(self):
 		# Send Singleton with coordinates of target window to QML
 		qmlRegisterSingletonType(Cord, "Coordinates", 1, 0, "Cord", lambda *args: self.c)
 		# engine.rootContext().setContextProperty("Cord", c)
 
-		self.timer.timeout.connect(self._hooking_fun)
+		self.timer.timeout.connect(self.c.hooking)
 		self.timer.start()
 
-	def _hooking_fun(self):
-		try:
-			self.c.hooking()
-		except error:
-			# Handel exit
-			self.app.exit()
 
 	# FIXME attach to real views
 	def setup_bars(self):

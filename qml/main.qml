@@ -3,9 +3,9 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import Coordinates 1.0 as Coordinates
 
-ApplicationWindow {
+Window  {
 	id: mainWindow
-	flags: Qt.Widget | Qt.FramelessWindowHint | Qt.WindowTransparentForInput | Qt.WindowStaysOnTopHint
+	flags: Qt.Widget | Qt.FramelessWindowHint | Qt.WindowTransparentForInput
 	visible: true
 	title: qsTr("LoR-DeckTracker")
 	color: "transparent"

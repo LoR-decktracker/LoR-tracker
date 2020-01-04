@@ -7,15 +7,13 @@ Window {
 
 	property int barMargin: sidebar.width * 0.10
 	width: 220
-
+//	title: qsTr("LoR-DeckTracker")
 	id: sidebar
 	visible: true
 	flags: Qt.FramelessWindowHint
 	color: "transparent"
 	LayoutMirroring.enabled: isEnemy
 	LayoutMirroring.childrenInherit: true
-
-
 
 	Rectangle {
 		id: squareRect

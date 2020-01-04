@@ -1,13 +1,8 @@
 import sys
 
-from qtpy.QtCore import QUrl, QTimer
+from qtpy.QtCore import QUrl
 from qtpy.QtGui import QGuiApplication
-from qtpy.QtQml import QQmlApplicationEngine, qmlRegisterType, qmlRegisterSingletonType
-
-from dataObjects.Bar import Bar, Region
-from dataObjects.BarList import BarList
-
-import platform
+from qtpy.QtQml import QQmlApplicationEngine
 
 from utility.Setup import Setup
 
