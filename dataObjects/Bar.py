@@ -2,8 +2,9 @@
 meant to be used with BarList.py
 '''
 
-from qtpy.QtCore import QObject, Signal, Property, Qt
 from enum import Enum
+
+from qtpy.QtCore import QObject, Signal, Property, Qt, QTimer
 
 
 class Region(Enum):
@@ -34,6 +35,16 @@ class Bar(QObject):
 		self._count = count
 		self._region = region
 
+		#FIXME romove the timer for prod
+		self.timer = QTimer(interval=1000)
+		self.timer.timeout.connect(self.inc)
+		self.timer.start()
+
+	def inc(self):
+
+		self._cost = self._cost + 1 if self._cost < 9 else 0
+
+		self.costChanged.emit()
 	# ----------------------------------------------------------------------------------------------------------------------
 
 	nameChanged = Signal()
