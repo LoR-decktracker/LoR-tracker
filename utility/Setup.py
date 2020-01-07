@@ -2,7 +2,7 @@ import platform
 
 from qtpy.QtCore import QTimer
 from qtpy.QtGui import QGuiApplication
-from qtpy.QtQml import qmlRegisterSingletonType, QQmlApplicationEngine
+from qtpy.QtQml import qmlRegisterSingletonType, QQmlApplicationEngine, qmlRegisterType
 
 # import system specific files
 from dataObjects.Bar import Bar, Region
@@ -35,6 +35,7 @@ class Setup:
 
 	# FIXME attach to real views
 	def setup_bars(self):
-		lst = [Bar("user1", 1, 3, Region.DEMACIA), Bar("User2", 2, 4, Region.DEMACIA)]
+		lst = [Bar("user1", 1, 3, Region.DEMACIA)] * 16
 		self.barList = BarList(lst)
 		self.engine.rootContext().setContextProperty("lst", self.barList)
+		qmlRegisterType(Bar, "DataModel", 1, 0, "BarType")

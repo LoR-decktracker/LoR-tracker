@@ -23,7 +23,7 @@ Window  {
 		y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
 		   + Coordinates.Cord.y_t - height / 2
 
-		height: 700
+//		height: childrenRect.height
 		barModel: lst
 		isEnemy: true
 
@@ -35,7 +35,7 @@ Window  {
 		x: Coordinates.Cord.x_r - width
 		y: (Coordinates.Cord.y_b - Coordinates.Cord.y_t) / 2
 		   + Coordinates.Cord.y_t - height / 2
-		height: 700
+//		height: childrenRect.height
 		barModel: lst
 	}
 }

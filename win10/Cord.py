@@ -32,6 +32,14 @@ class Cord(QObject):
 	def y_b(self):
 		return self._y_b
 
+	@Property(int, notify=_changed)
+	def width(self):
+		return self._x_r - self._x_l
+
+	@Property(int, notify=_changed)
+	def height(self):
+		return self._y_b - self._y_t
+
 	def equals(self, x_l, y_t, x_r, y_b):
 		return x_l == self._x_l \
 		       and y_t == self._y_t \

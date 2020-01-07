@@ -1,4 +1,4 @@
 {
-    "files": ["qml/main.qml","win10/Cord.py","qml/Sidebar.qml","main.py","qml/Bar.qml"],
-    "importPaths":["qml/main.qml","win10/Cord.py","qml/Sidebar.qml","main.py","qml/Bar.qml"]
+    "files": ["qml/Bar.qml","qml/main.qml","qml/Sidebar.qml","qmldir","main.py","style/BarStyle.qml","win10/Cord.py"],
+    "importPaths":["qml/Bar.qml","qml/main.qml","qml/Sidebar.qml","qmldir","main.py","style/BarStyle.qml","win10/Cord.py"]
 }
