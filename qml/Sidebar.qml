@@ -77,18 +77,32 @@ Window {
 				cost: bar.cost
 				name: bar.name
 				count: bar.count
+
+				MouseArea {
+					anchors.fill: parent
+					hoverEnabled: true
+					onEntered: {
+						preview.visible = true
+						preview.y = parent.y + sidebar.y + optionBar.height + barMargin;
+					}
+					onExited: {
+						preview.visible = false
+					}
+
+				}
 			}
 		}
 	}
 
-	//	Window {
-	//		x: sidebar.x - width
-	//		y: 0
-	//		visible: true
-	//		flags: Qt.FramelessWindowHint | Qt.WindowTransparentForInput | Qt.WindowStaysOnTopHint
-	//		color: "red"
-	//		width: 40
-	//		height: 40
-	//	}
+	    Window {
+			id: preview
+			x: isEnemy ? sidebar.x + sidebar.width : sidebar.x - width
+			y: listview.y
+			visible: false
+			flags: Qt.FramelessWindowHint | Qt.WindowTransparentForInput | Qt.WindowStaysOnTopHint
+			color: "red"
+			width: 40
+			height: 40
+		}
 
 }
