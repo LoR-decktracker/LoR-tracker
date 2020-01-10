@@ -35,7 +35,7 @@ class Setup:
 
 	# FIXME attach to real views
 	def setup_bars(self):
-		lst = [Bar("user1", 1, 3, Region.DEMACIA)] * 16
+		lst = [Bar("Cras hendrerit", 1, 3, Region.DEMACIA)] * 16
 		self.barList = BarList(lst)
 		self.engine.rootContext().setContextProperty("lst", self.barList)
 		qmlRegisterType(Bar, "DataModel", 1, 0, "BarType")

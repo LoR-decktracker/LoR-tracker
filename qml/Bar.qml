@@ -3,6 +3,7 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 
 Rectangle {
+	id: rectangle
 	property int cost: 5
 	property string name: "Card Name"
 	property int count: 2
@@ -12,36 +13,59 @@ Rectangle {
 	color: "white"
 
 	width: 200
-	height: 40
+	height: 20
 	radius: barRadius
 	opacity: 1
-	antialiasing: false
+//	antialiasing: false
 
 
 	// style
 	property int borderWidth: 4
-	property int barRadius: 10
+	property int barRadius: 8
 	property string fontName: "Open Sans"
 
-	gradient: Gradient {
+	property string borderColor: "fbc02d"
+
+	gradient: borderGradient
+
+	Gradient {
+		id: borderGradient
+		orientation: Gradient.Horizontal
+		GradientStop { position: isEnemy ? coutBox.width/rectangle.width : 1 - coutBox.width/rectangle.width
+			color: "#00" + borderColor }
+		GradientStop { position: isEnemy ? 1.0 : 0.0
+			color: "#" + borderColor}
+	}
+
+	property string barColor: "ef5350"
+
+	Gradient {
+		id: barGradient
 		orientation: Gradient.Horizontal
 		GradientStop { position: isEnemy ? 0.0 : 1.0
-			color: "#00fbc02d" }
+			color: "#00" + barColor }
 		GradientStop { position: isEnemy ? 1.0 : 0.0
-			color: "#fbc02d" }
+			color: "#" + barColor }
 	}
+
 
 	Rectangle{
 		id: bar
 		anchors.topMargin: borderWidth
 		anchors.bottomMargin: borderWidth
 		anchors.leftMargin: borderWidth
-		anchors.fill: parent
-		radius: barRadius
+		radius: barRadius - borderWidth
+		anchors.rightMargin: -20
+
+		anchors.right: coutBox.left
+		anchors.bottom: parent.bottom
+		anchors.left: parent.left
+		anchors.top: parent.top
+
+		gradient: barGradient
 	}
 
 	Item {
-		id: element
 		anchors.right: coutBox.left
 		anchors.left: bar.left
 		anchors.bottom: bar.bottom
@@ -70,7 +94,7 @@ Rectangle {
 				verticalAlignment: Text.AlignVCenter
 				horizontalAlignment: Text.AlignHCenter
 				anchors.fill: parent
-				font.pixelSize: 24
+				font.pixelSize: Math.min(parent.height, parent.width)
 				font.family: fontName
 				font.bold: true
 			}
@@ -78,13 +102,13 @@ Rectangle {
 
 		Text {
 			id: cardNameText
-			anchors.leftMargin: 0
+			anchors.leftMargin: 4
 			anchors.bottom: parent.bottom
 			anchors.top: parent.top
 			anchors.left: manaCostBox.right
-			color: "black"
+			color: "white"
 			text: name
-			font.pointSize: 18
+			font.pixelSize: 14
 			font.family: fontName
 			verticalAlignment: Text.AlignVCenter
 			horizontalAlignment: Text.AlignHCenter
@@ -106,7 +130,7 @@ Rectangle {
 			id: countText
 			text: count
 			color: "white"
-			font.pointSize: 18
+			font.pixelSize: Math.min(parent.height, parent.width) * (3/4)
 			font.family: fontName
 			font.bold: true
 			anchors.fill: parent

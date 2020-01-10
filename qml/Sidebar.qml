@@ -15,8 +15,8 @@ Window {
 	LayoutMirroring.childrenInherit: true
 
 
-	height: items.height + 2* barMargin
-	width: 220
+	height: items.height + 2 * barMargin
+	width: 224
 
 
 	property int barMargin: sidebar.width * 0.10
@@ -60,7 +60,10 @@ Window {
 			id: listview
 			height: childrenRect.height
 			anchors.top: optionBar.bottom
-			width: parent.width
+//			width: parent.width
+			anchors.right: parent.right
+			anchors.left: parent.left
+
 
 			interactive: false
 			spacing: sidebar.spacing
@@ -70,9 +73,9 @@ Window {
 				isEnemy: sidebar.isEnemy
 
 				// FIXME set height scaling factor
-				height: 40 /**  (sidebar.width / (sidebar.width + barMargin))*/
+				height: width * 0.1696428571428571 /**  (sidebar.width / (sidebar.width + barMargin))*/
 				anchors.right: parent.right
-				anchors.left: parent.left
+
 
 				cost: bar.cost
 				name: bar.name
